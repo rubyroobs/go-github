@@ -8,7 +8,7 @@
 package github
 
 import (
-	"encoding/json"
+	json "github.com/json-iterator/go"
 	"time"
 )
 

@@ -14,7 +14,7 @@ import (
 	"crypto/sha256"
 	"crypto/sha512"
 	"encoding/hex"
-	"encoding/json"
+	json "github.com/json-iterator/go"
 	"errors"
 	"fmt"
 	"hash"

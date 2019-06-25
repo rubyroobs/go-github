@@ -9,7 +9,7 @@ import (
 	"context"
 	"fmt"
 
-	"encoding/json"
+	json "github.com/json-iterator/go"
 )
 
 // RepositoryListForksOptions specifies the optional parameters to the

@@ -7,7 +7,7 @@ package github
 
 import (
 	"bytes"
-	"encoding/json"
+	json "github.com/json-iterator/go"
 	"net/http"
 	"net/url"
 	"reflect"

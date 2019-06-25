@@ -7,7 +7,7 @@ package github
 
 import (
 	"context"
-	"encoding/json"
+	json "github.com/json-iterator/go"
 	"fmt"
 	"io"
 	"net/http"
