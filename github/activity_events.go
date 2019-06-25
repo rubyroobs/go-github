@@ -8,16 +8,19 @@ package github
 import (
 	"context"
 	"fmt"
+	"time"
 )
 
 // ListEvents drinks from the firehose of all public events across GitHub.
 //
 // GitHub API docs: https://developer.github.com/v3/activity/events/#list-public-events
 func (s *ActivityService) ListEvents(ctx context.Context, opt *ListOptions) ([]*Event, *Response, error) {
-	u, err := addOptions("events", opt)
+	base, err := addOptions("events", opt)
 	if err != nil {
 		return nil, nil, err
 	}
+
+	u := fmt.Sprintf("%s&rand=%d", base, time.Now().UnixNano())
 
 	req, err := s.client.NewRequest("GET", u, nil)
 	if err != nil {
