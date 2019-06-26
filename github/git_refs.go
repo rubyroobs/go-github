@@ -66,10 +66,7 @@ func (s *GitService) GetRef(ctx context.Context, owner string, repo string, ref 
 
 	r := new(Reference)
 	resp, err := s.client.Do(ctx, req, r)
-	if _, ok := err.(*json.UnmarshalTypeError); ok {
-		// Multiple refs, means there wasn't an exact match.
-		return nil, resp, errors.New("no exact match found for this ref")
-	} else if err != nil {
+	if err != nil {
 		return nil, resp, err
 	}
 
