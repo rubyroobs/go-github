@@ -8,7 +8,6 @@ package github
 import (
 	"context"
 	json "github.com/json-iterator/go"
-	"errors"
 	"fmt"
 	"net/url"
 	"strings"

@@ -1,7 +1,7 @@
 module github.com/rubyroobs/go-github/v26
 
 require (
-	github.com/rubyroobs/go-github/v26 v26.0.12
+	github.com/rubyroobs/go-github/v26 v26.0.13
 	github.com/google/go-querystring v1.0.0
 	github.com/json-iterator/go v1.1.6
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
