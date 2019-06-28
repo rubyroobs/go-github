@@ -167,6 +167,27 @@ func (s *RepositoriesService) GetCommit(ctx context.Context, owner, repo, sha st
 	return commit, resp, nil
 }
 
+// GetCommitWithFullNameRepo fetches the specified commit, including all details about it, but accepts a full repo name (rubyroobs/go-github for example)
+//
+// GitHub API docs: https://developer.github.com/v3/repos/commits/#get-a-single-commit
+// See also: https://developer.github.com/v3/git/commits/#get-a-single-commit provides the same functionality
+func (s *RepositoriesService) GetCommitWithFullNameRepo(ctx context.Context, repo, sha string) (*RepositoryCommit, *Response, error) {
+	u := fmt.Sprintf("repos/%v/commits/%v", repo, sha)
+
+	req, err := s.client.NewRequest("GET", u, nil)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	commit := new(RepositoryCommit)
+	resp, err := s.client.Do(ctx, req, commit)
+	if err != nil {
+		return nil, resp, err
+	}
+
+	return commit, resp, nil
+}
+
 // GetCommitRaw fetches the specified commit in raw (diff or patch) format.
 func (s *RepositoriesService) GetCommitRaw(ctx context.Context, owner string, repo string, sha string, opt RawOptions) (string, *Response, error) {
 	u := fmt.Sprintf("repos/%v/%v/commits/%v", owner, repo, sha)
